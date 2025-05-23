@@ -1,0 +1,941 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Metal Mania', 'Permanent Marker', cursive;
+    line-height: 1.6;
+    color: #fff;
+    background: #000;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff0080);
+    background-size: 400% 400%;
+    animation: neonGlow 3s ease-in-out infinite;
+    z-index: 1000;
+    border-bottom: 3px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+}
+
+@keyframes neonGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.nav-logo h2 {
+    color: #000;
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff;
+    animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 0px #fff;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    color: #ff0080;
+    text-shadow: 0 0 10px #ff0080;
+    transform: scale(1.1);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 4px;
+    background: #000;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(ellipse at center, #ff00ff 0%, #8000ff 25%, #0080ff 50%, #000 100%);
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon fill="%23ffffff20" points="50,0 90,25 90,75 50,100 10,75 10,25"/></svg>');
+    background-size: 200px 200px, 100px 100px;
+    animation: lightningBolt 4s ease-in-out infinite, metalPattern 8s linear infinite;
+}
+
+@keyframes lightningBolt {
+    0%, 100% { 
+        background-position: 0% 0%, 0 0;
+        opacity: 0.3;
+    }
+    50% { 
+        background-position: 100% 100%, 50px 50px;
+        opacity: 0.7;
+    }
+}
+
+@keyframes metalPattern {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 8px;
+    text-shadow: 
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 30px #ff00ff,
+        3px 3px 0px #000,
+        -3px -3px 0px #000,
+        3px -3px 0px #000,
+        -3px 3px 0px #000;
+    animation: titlePulse 2s ease-in-out infinite alternate;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+}
+
+@keyframes titlePulse {
+    from { 
+        text-shadow: 
+            0 0 10px #ff00ff,
+            0 0 20px #ff00ff,
+            0 0 30px #ff00ff,
+            3px 3px 0px #000;
+    }
+    to { 
+        text-shadow: 
+            0 0 20px #00ffff,
+            0 0 30px #00ffff,
+            0 0 40px #00ffff,
+            3px 3px 0px #000;
+    }
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #00ffff;
+    text-shadow: 2px 2px 0px #000;
+    animation: fadeInUp 1s ease 0.2s both;
+    font-family: 'Permanent Marker', cursive;
+    text-transform: uppercase;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    animation: fadeInUp 1s ease 0.4s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 18px 35px;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: 900;
+    transition: all 0.3s ease;
+    border: 3px solid;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff0080, #ff00ff);
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.8);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #00ffff;
+    border-color: #00ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background: #00ffff;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.8);
+}
+
+.btn-small {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+}
+
+/* Sections */
+.section-title {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 
+        0 0 10px #ff00ff,
+        3px 3px 0px #000;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+    letter-spacing: 4px;
+}
+
+/* About Section */
+.about {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #2a0845 0%, #000 50%, #1a1a2e 100%);
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><circle cx="30" cy="30" r="2" fill="%23ff00ff40"/></svg>');
+    background-size: 60px 60px;
+    animation: sparkle 4s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(60px) translateY(60px); }
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+}
+
+.about-text p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    line-height: 1.8;
+    text-shadow: 1px 1px 0px #000;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.band-members h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.member {
+    background: linear-gradient(135deg, #ff0080, #8000ff);
+    padding: 25px;
+    border: 3px solid #fff;
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.member::before {
+    content: '🎸';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 3rem;
+    opacity: 0.3;
+    transform: rotate(15deg);
+}
+
+.member:hover {
+    transform: translateY(-8px) rotate(2deg);
+    box-shadow: 0 15px 40px rgba(255, 0, 255, 0.9);
+}
+
+.member h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    font-family: 'Metal Mania', cursive;
+    text-transform: uppercase;
+}
+
+.member p {
+    color: #000;
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #fff;
+    font-family: 'Permanent Marker', cursive;
+}
+
+/* Music Section */
+.music {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    position: relative;
+}
+
+.music::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 0, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.3) 0%, transparent 50%);
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.track-card {
+    background: linear-gradient(135deg, #2d1b69 0%, #000 100%);
+    border: 3px solid #ff00ff;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.track-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.track-card:hover::before {
+    opacity: 1;
+    top: -60%;
+    left: -60%;
+}
+
+.track-card:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(255, 0, 255, 0.8);
+    border-color: #00ffff;
+}
+
+.track-art {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, #ff00ff 0%, #8000ff 50%, #000 100%);
+    margin: 0 auto 25px;
+    position: relative;
+    border: 3px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+}
+
+.track-art::after {
+    content: '🎸';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    font-size: 4rem;
+    text-shadow: 0 0 20px #fff;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.track-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 0 10px #ff00ff;
+    font-family: 'Metal Mania', cursive;
+    text-transform: uppercase;
+}
+
+.track-card p {
+    color: #00ffff;
+    margin-bottom: 1.5rem;
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.play-btn {
+    background: linear-gradient(45deg, #ff0080, #ff00ff);
+    color: #fff;
+    border: 3px solid #fff;
+    padding: 15px 30px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.play-btn:hover {
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+}
+
+.streaming-links {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.streaming-links h3 {
+    margin-bottom: 2rem;
+    color: #fff;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #00ffff;
+    font-family: 'Metal Mania', cursive;
+    text-transform: uppercase;
+}
+
+.platform-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.platform-link {
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #8000ff, #ff0080);
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+    box-shadow: 0 0 15px rgba(128, 0, 255, 0.5);
+}
+
+.platform-link:hover {
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.8);
+}
+
+/* Shows Section */
+.shows {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0f0f23 0%, #2a0845 100%);
+    position: relative;
+}
+
+.shows::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M20,5 L25,15 L35,15 L27,23 L30,35 L20,28 L10,35 L13,23 L5,15 L15,15 Z" fill="%23ffff0040"/></svg>');
+    background-size: 80px 80px;
+    animation: starfall 6s linear infinite;
+}
+
+@keyframes starfall {
+    0% { transform: translateY(-80px); }
+    100% { transform: translateY(100vh); }
+}
+
+.shows-list {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.show-card {
+    background: linear-gradient(135deg, #ff0080, #8000ff);
+    border: 4px solid #fff;
+    padding: 30px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 0 30px rgba(255, 0, 128, 0.6);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.show-card::before {
+    content: '⚡';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    animation: electric 1.5s ease-in-out infinite;
+}
+
+@keyframes electric {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.show-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(255, 0, 128, 0.9);
+}
+
+.show-date {
+    text-align: center;
+    min-width: 100px;
+    background: #000;
+    padding: 15px;
+    border: 2px solid #fff;
+}
+
+.show-date .month {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #00ffff;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+}
+
+.show-date .day {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 10px #ff00ff;
+    font-family: 'Metal Mania', cursive;
+}
+
+.show-info {
+    flex: 1;
+}
+
+.show-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    font-family: 'Metal Mania', cursive;
+    text-transform: uppercase;
+}
+
+.show-info p {
+    color: #000;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #fff;
+    font-family: 'Permanent Marker', cursive;
+}
+
+/* Contact Section */
+.contact {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #000 100%);
+    position: relative;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 0, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.2) 0%, transparent 50%);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-info h3,
+.contact-form h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #ff00ff;
+    font-family: 'Metal Mania', cursive;
+    text-transform: uppercase;
+}
+
+.contact-info p {
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: 1px 1px 0px #000;
+    font-size: 1.1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #ff0080, #8000ff);
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Metal Mania', cursive;
+    box-shadow: 0 0 15px rgba(255, 0, 128, 0.5);
+}
+
+.social-link:hover {
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.8);
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 18px;
+    border: 3px solid #ff00ff;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #888;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(45deg, #000, #2a0845, #000);
+    color: white;
+    padding: 50px 0 30px;
+    border-top: 4px solid #ff00ff;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.footer-logo h3 {
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-family: 'Metal Mania', cursive;
+    text-shadow: 0 0 10px #ff00ff;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Metal Mania', cursive;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.footer-links a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 2px solid #ff00ff;
+    color: #fff;
+    font-family: 'Permanent Marker', cursive;
+    text-shadow: 1px 1px 0px #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background: linear-gradient(45deg, #ff00ff, #00ffff);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 30px 0;
+        border-bottom: 4px solid #fff;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 15px 0;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .show-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .nav-logo h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .nav-container {
+        padding: 0 15px;
+        height: 70px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .nav-logo h2 {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+
+    .track-art {
+        width: 180px;
+        height: 180px;
+    }
+}
